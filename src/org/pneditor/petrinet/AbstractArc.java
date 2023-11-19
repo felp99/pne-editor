@@ -16,6 +16,8 @@
  */
 package org.pneditor.petrinet;
 
+import org.pneditor.petrinet.models.group1.NegativeTokenInsertedException;
+
 /**
  *
  * @author Martin Riesz <riesz.martin at gmail.com>

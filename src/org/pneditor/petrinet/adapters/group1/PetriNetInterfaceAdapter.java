@@ -10,24 +10,22 @@ import org.pneditor.petrinet.UnimplementedCaseException;
 import org.pneditor.petrinet.models.group1.PetriNetwork;
 import org.pneditor.petrinet.models.group1.Place;
 
-public class PetrinetAdapter extends PetriNetInterface {
+public class PetriNetInterfaceAdapter extends PetriNetInterface {
 	
-	private PetriNetwork petrinet;
-
+	private PetriNetwork petrinetwork;
+	
 	@Override
 	public AbstractPlace addPlace() {
-		
-		Place place = new Place();
-		petrinet.addPlace(place);
-		
-		PlaceAdapter placeAdapter = new PlaceAdapter(null, place);
-		return placeAdapter.convertPlace(place);
+		PlaceAdapter place = new PlaceAdapter(null);
+		petrinetwork.addPlace(place.getPlace());
+		return place;
 	}
 
 	@Override
 	public AbstractTransition addTransition() {
-		// TODO Auto-generated method stub
-		return null;
+		TransitionAdapter transition = new TransitionAdapter(null);
+		petrinetwork.addTransition(transition.getTransition());
+		return transition;
 	}
 
 	@Override
@@ -80,4 +78,12 @@ public class PetrinetAdapter extends PetriNetInterface {
 		
 	}
 
+	public PetriNetwork getPetrinetwork() {
+		return petrinetwork;
+	}
+
+	public void setPetrinetwork(PetriNetwork petrinetwork) {
+		this.petrinetwork = petrinetwork;
+	}
+	
 }

@@ -14,4 +14,5 @@ public class NodeAdapter extends AbstractNode {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }
