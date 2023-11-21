@@ -16,11 +16,13 @@
  */
 package org.pneditor.petrinet;
 
+import org.pneditor.petrinet.adapters.group1.NodeAdapter;
+
 /**
  *
  * @author Martin Riesz <riesz.martin at gmail.com>
  */
-public abstract class AbstractPlace extends AbstractNode {
+public abstract class AbstractPlace extends NodeAdapter {
 	
 	public AbstractPlace(final String label) {
 		super(label);

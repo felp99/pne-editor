@@ -1,30 +1,44 @@
-/**
- * 
- */
+
 package org.pneditor.petrinet.adapters.group1;
 
 import org.pneditor.petrinet.AbstractArc;
 import org.pneditor.petrinet.AbstractNode;
 import org.pneditor.petrinet.ResetArcMultiplicityException;
 import org.pneditor.petrinet.models.group1.Arc;
+import org.pneditor.petrinet.models.group1.NegativeTokenInsertedException;
 import org.pneditor.petrinet.models.group1.NoExistingObjectException;
 
 /**
  * 
  */
 public class ArcAdapter extends AbstractArc {
-	
-	private Arc arc;
 
+	private Arc arc;
+	
 	@Override
 	public AbstractNode getSource() {
-		return null;
+		AbstractNode start = null;
+		try {
+			start = (AbstractNode) arc.getStart();
+		} catch (NoExistingObjectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return start;
 	}
 
 	@Override
 	public AbstractNode getDestination() {
-		// TODO Auto-generated method stub
-		return null;
+		AbstractNode end = null;
+		try {
+			end = (AbstractNode) arc.getEnd();
+		} catch (NoExistingObjectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return end;
 	}
 
 	@Override
@@ -46,16 +60,26 @@ public class ArcAdapter extends AbstractArc {
 	}
 
 	@Override
-	public int getMultiplicity() throws ResetArcMultiplicityException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getMultiplicity() throws ResetArcMultiplicityException {		
+		return arc.getWeight();
 	}
 
 	@Override
 	public void setMultiplicity(int multiplicity) throws ResetArcMultiplicityException {
-		// TODO Auto-generated method stub
-		
+		try {
+			arc.setWeight(multiplicity);
+		} catch (NegativeTokenInsertedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
+	public Arc getArc() {
+		return arc;
+	}
 
+	public void setArc(Arc arc) {
+		this.arc = arc;
+	}
+		
 }
