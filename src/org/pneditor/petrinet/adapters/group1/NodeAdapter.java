@@ -8,7 +8,7 @@ public class NodeAdapter extends AbstractNode {
 		super(label);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public boolean isPlace() {
 		// TODO Auto-generated method stub
