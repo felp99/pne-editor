@@ -16,7 +16,6 @@
  */
 package org.pneditor.petrinet;
 
-import org.pneditor.petrinet.models.group1.NegativeTokenInsertedException;
 
 /**
  *

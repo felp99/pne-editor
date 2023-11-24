@@ -9,7 +9,7 @@ public class PlaceAdapter extends AbstractPlace {
 
 	public PlaceAdapter(String label) {		
 		super(label);
-		// TODO Auto-generated constructor stub
+        this.place = new Place();
 	}
 
 	public Place getPlace() {

@@ -1,28 +1,36 @@
 package org.pneditor.petrinet.adapters.group1;
 
+import java.util.ArrayList;
+
 import org.pneditor.petrinet.AbstractTransition;
+import org.pneditor.petrinet.models.group1.Arc;
+import org.pneditor.petrinet.models.group1.NoExistingObjectException;
 import org.pneditor.petrinet.models.group1.Transition;
 
 public class TransitionAdapter extends AbstractTransition {
 	
-	private Transition transition;
-
-	public TransitionAdapter(String label) {
+    private final Transition transition;
+	
+	public TransitionAdapter(String label) throws NoExistingObjectException {
 		super(label);
-		// TODO Auto-generated constructor stub
+        this.transition = new Transition(new ArrayList<>(), new ArrayList<>());
 	}
 	
 	@Override
 	public boolean isPlace() {
 		return false;
 	}
-
-	public Transition getTransition() {
-		return transition;
+	
+	public boolean isEnabled() {
+		return this.transition.fireable();
+	}
+	
+	public void fire() throws NoExistingObjectException {
+		this.transition.fire();
 	}
 
-	public void setTransition(Transition transition) {
-		this.transition = transition;
+	public Transition getTransition() {
+		return this.transition;
 	}
 
 }
